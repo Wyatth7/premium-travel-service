@@ -16,7 +16,7 @@
     justify-content: space-between;
     flex-direction: column;
     height: inherit;
-    width: 40rem;
+    width: 30%;
     background-color: var(--white);
 
     .header,
@@ -26,6 +26,8 @@
 
     .header {
       border-bottom: 1px solid var(--gray);
+      background-color: var(--blue);
+      color: var(--white);
 
       h1 {
         font-size: 2rem;
