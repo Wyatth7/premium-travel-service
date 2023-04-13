@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PersonModel } from 'src/app/models/person-model';
 import { GridItemModel } from 'src/app/models/grid-item-model';
-
 import { PersonClientService } from 'src/app/services/clients/person-client.service';
-import { GridItemComponent } from 'src/app/components/grid/grid-item/grid-item.component';
 
 @Component({
   selector: 'app-agents',
@@ -26,7 +24,11 @@ export class AgentsComponent implements OnInit {
     if (!this.agents) return [];
 
     this.agents.forEach((agent) =>
-      gridItems.push({ title: agent.nameFull, id: agent.personId })
+      gridItems.push({
+        title: agent.nameFull,
+        id: agent.personId,
+        func: async () => {},
+      })
     );
 
     return gridItems;

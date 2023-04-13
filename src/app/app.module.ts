@@ -8,6 +8,7 @@ import { AgentsComponent } from './@pages/agents/agents.component';
 import { GridComponent } from './components/grid/grid.component';
 import { GridItemComponent } from './components/grid/grid-item/grid-item.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TripsComponent } from './@pages/trips/trips.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
     AgentsComponent,
     GridComponent,
     GridItemComponent,
+    TripsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

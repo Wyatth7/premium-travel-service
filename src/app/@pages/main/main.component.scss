@@ -42,6 +42,11 @@
       }
     }
 
+    .content {
+      height: inherit;
+      overflow-y: auto;
+    }
+
     .footer {
       border-top: 1px solid var(--gray);
       .buttons {

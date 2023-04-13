@@ -8,8 +8,7 @@
   min-width: 0;
   transition: all 0.2s;
 
-  border-top: 1px solid var(--blue);
-  border-bottom: 1px solid var(--blue);
+  border: 1px solid var(--blue);
 
   .left-pane,
   .right-pane {
