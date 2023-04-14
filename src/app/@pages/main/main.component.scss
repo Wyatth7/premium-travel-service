@@ -6,16 +6,17 @@
   height: 100vh;
   display: flex;
   justify-content: center;
+  align-items: center;
   overflow-y: hidden;
-  background-color: var(--off-white);
+  background-image: url("../../../assets/images/bkground.webp");
 
   &--wrapper {
-    border-left: 1px solid var(--gray);
-    border-right: 1px solid var(--gray);
+    border: 1px solid var(--blue);
+    border-radius: 5px;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    height: inherit;
+    height: 80%;
     width: 30%;
     background-color: var(--white);
 
@@ -45,6 +46,11 @@
     .content {
       height: inherit;
       overflow-y: auto;
+      padding: 1rem;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
 
     .footer {

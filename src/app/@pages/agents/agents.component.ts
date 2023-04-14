@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PersonModel } from 'src/app/models/person-model';
 import { GridItemModel } from 'src/app/models/grid-item-model';
 import { PersonClientService } from 'src/app/services/clients/person-client.service';
+import { SelectService } from 'src/app/services/select.service';
 
 @Component({
   selector: 'app-agents',
@@ -9,28 +10,31 @@ import { PersonClientService } from 'src/app/services/clients/person-client.serv
   styleUrls: ['./agents.component.scss'],
 })
 export class AgentsComponent implements OnInit {
-  agents!: PersonModel[];
+  agents: GridItemModel[] = [];
 
-  constructor(private personClientService: PersonClientService) {}
+  constructor(
+    private personClientService: PersonClientService,
+    private selectService: SelectService
+  ) {}
 
   async ngOnInit() {
-    this.agents = await this.personClientService.getAgents();
-    console.log(this.agents);
-  }
+    const agentsResponse = await this.personClientService.getAgents();
 
-  getGridItems() {
-    const gridItems: GridItemModel[] = [];
+    if (!agentsResponse) {
+      this.agents = [];
+      return;
+    }
 
-    if (!this.agents) return [];
+    console.log(agentsResponse);
 
-    this.agents.forEach((agent) =>
-      gridItems.push({
-        title: agent.nameFull,
-        id: agent.personId,
-        func: async () => {},
-      })
+    agentsResponse.forEach((agent) =>
+      this.agents.push({ id: agent.personId, title: agent.nameFull })
     );
 
-    return gridItems;
+    this.selectService.setSelectAction(this.actionOnAgentClicked);
+  }
+
+  async actionOnAgentClicked() {
+    console.log('agent was clicked');
   }
 }

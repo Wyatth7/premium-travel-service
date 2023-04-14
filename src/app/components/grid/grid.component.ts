@@ -7,5 +7,5 @@ import { GridItemModel } from 'src/app/models/grid-item-model';
   styleUrls: ['./grid.component.scss'],
 })
 export class GridComponent {
-  @Input() gridItems!: GridItemModel[];
+  @Input() data!: GridItemModel[];
 }
