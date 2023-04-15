@@ -13,4 +13,8 @@ export class TripClientService {
       'trip/agent/' + agentId
     );
   }
+
+  async createTrip(agentId: string) {
+    return await this.httpClientService.post('trip/create/' + agentId);
+  }
 }

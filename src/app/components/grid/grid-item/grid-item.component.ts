@@ -12,6 +12,7 @@ import { SelectService } from 'src/app/services/select.service';
 export class GridItemComponent {
   @Input() title!: string;
   @Input() id!: string;
+  @Input() extraText?: string;
 
   constructor(private selectService: SelectService) {}
 

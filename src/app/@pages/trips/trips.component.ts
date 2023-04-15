@@ -26,8 +26,39 @@ export class TripsComponent implements OnInit {
         helperText:
           'Select a trip to view an itinerary or resume trip creation',
         showFooterButtons: true,
+        buttons: {
+          buttonLeft: {
+            showButton: false,
+            buttonText: '',
+            action: async () => {},
+          },
+          buttonRight: {
+            showButton: true,
+            buttonText: 'Create',
+            action: () => this.createTripAction(),
+          },
+        },
       });
     }, 0);
+
+    await this.getTrips();
+  }
+
+  async createTripAction() {
+    try {
+      await this.tripClientService.createTrip(
+        this.applicationStateService.agentId
+      );
+
+      // refresh trips after trip created
+      await this.getTrips();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  private async getTrips() {
+    this.agentTripData = [];
 
     const agentTripResponse = await this.tripClientService.getAgentTripData(
       this.applicationStateService.agentId
@@ -36,7 +67,8 @@ export class TripsComponent implements OnInit {
     agentTripResponse.forEach((agentTrip: AgentTripModel, index: number) =>
       this.agentTripData.push({
         id: agentTrip.tripId,
-        title: 'Trip' + (index + 1),
+        title: 'Trip ' + (index + 1),
+        extraText: agentTrip.isComplete ? 'Complete' : 'Incomplete',
       })
     );
   }

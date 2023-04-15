@@ -14,4 +14,10 @@ export class HttpClientService {
       this.httpClient.get<TResponse>(environment.baseApiPath + route)
     );
   }
+
+  async post<TResponse>(route: string, payload?: any) {
+    return await lastValueFrom(
+      this.httpClient.post<TResponse>(environment.baseApiPath + route, payload)
+    );
+  }
 }

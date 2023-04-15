@@ -9,8 +9,8 @@
   </div>
   <div class="footer" *ngIf="pageData.showFooterButtons">
    <div class="buttons">
-    <button class="button-left">Later</button>
-    <button class="button-right">Done</button>
+    <button *ngIf="pageData.buttons?.buttonLeft?.showButton" class="button-left">{{pageData.buttons?.buttonLeft?.buttonText}}</button>
+    <button (click)="pageData.buttons?.buttonRight?.action()" *ngIf="pageData.buttons?.buttonRight?.showButton" class="button-right">{{pageData.buttons?.buttonRight?.buttonText}}</button>
    </div>
   </div>
  </div>
