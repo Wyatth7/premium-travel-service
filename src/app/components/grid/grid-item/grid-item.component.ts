@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { GridItemModel } from 'src/app/models/grid-item-model';
+import { ApplicationStateService } from 'src/app/services/application-state.service';
+import { NavigationService } from 'src/app/services/navigation.service';
 import { SelectService } from 'src/app/services/select.service';
 
 @Component({

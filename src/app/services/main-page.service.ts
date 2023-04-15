@@ -13,12 +13,14 @@ export class MainPageService {
     buttons: {
       buttonLeft: {
         buttonText: '',
+        showButton: true,
         async action() {
           return;
         },
       },
       buttonRight: {
         buttonText: '',
+        showButton: true,
         async action() {
           return;
         },

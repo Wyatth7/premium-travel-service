@@ -7,7 +7,7 @@ import { TripsComponent } from './@pages/trips/trips.component';
 
 const routes: Routes = [
   { path: 'agents', component: AgentsComponent },
-  { path: 'trips', component: TripsComponent}
+  { path: 'trips', component: TripsComponent },
   { path: '**', redirectTo: 'agents' },
 ];
 

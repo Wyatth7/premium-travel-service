@@ -4,15 +4,16 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ApplicationStateService {
-  private _agentId?: string;
+  private _lastSelectedId = '';
 
   set agentId(id: string) {
-    this._agentId = id;
+    this._lastSelectedId = id;
+    console.log(id);
   }
 
   get agentId() {
-    if (!this._agentId) return '';
-    return this._agentId;
+    if (!this._lastSelectedId) return '';
+    return this._lastSelectedId;
   }
 
   constructor() {}

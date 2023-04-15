@@ -17,11 +17,12 @@ export class SelectService {
 
   constructor() {}
 
-  setSelectAction(actionMethod: () => Promise<void>) {
+  setSelectAction(actionMethod: (id: string) => Promise<void>) {
     this.selectAciton = actionMethod;
   }
 
   async executeAction(id: string) {
-    await this.selectAciton(id);
+    this.lastSelectedId = id;
+    await this.selectAciton(this.lastSelectedId);
   }
 }

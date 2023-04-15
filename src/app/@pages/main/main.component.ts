@@ -19,6 +19,8 @@ export class MainComponent implements OnInit, OnDestroy {
     this.pageDataSubscription = this.mainPageService.mainPageData.subscribe(
       (pageData) => (this.pageData = pageData)
     );
+
+    console.log('render');
   }
 
   ngOnDestroy(): void {

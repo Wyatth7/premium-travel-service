@@ -35,7 +35,9 @@ export class AgentsComponent implements OnInit {
       this.agents.push({ id: agent.personId, title: agent.nameFull })
     );
 
-    this.selectService.setSelectAction(this.actionOnAgentClicked);
+    this.selectService.setSelectAction(() =>
+      this.actionOnAgentClicked(this.selectService.lastSelectedId)
+    );
 
     this.mainPageService.setMainPageData({
       title: 'Agents',
@@ -44,8 +46,8 @@ export class AgentsComponent implements OnInit {
     });
   }
 
-  async actionOnAgentClicked() {
-    this.applicationStateService.agentId = this.selectService.lastSelectedId;
-    this.navigationService.navigate([]);
+  async actionOnAgentClicked(id: string) {
+    this.applicationStateService.agentId = id;
+    this.navigationService.navigate(['trips']);
   }
 }
