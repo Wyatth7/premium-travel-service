@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { PersonModel } from 'src/app/models/person-model';
 import { GridItemModel } from 'src/app/models/grid-item-model';
 import { PersonClientService } from 'src/app/services/clients/person-client.service';
 import { SelectService } from 'src/app/services/select.service';
+import { MainPageService } from 'src/app/services/main-page.service';
+import { NavigationService } from 'src/app/services/navigation.service';
+import { ApplicationStateService } from 'src/app/services/application-state.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-agents',
@@ -14,7 +17,10 @@ export class AgentsComponent implements OnInit {
 
   constructor(
     private personClientService: PersonClientService,
-    private selectService: SelectService
+    private selectService: SelectService,
+    private mainPageService: MainPageService,
+    private navigationService: NavigationService,
+    private applicationStateService: ApplicationStateService
   ) {}
 
   async ngOnInit() {
@@ -25,16 +31,21 @@ export class AgentsComponent implements OnInit {
       return;
     }
 
-    console.log(agentsResponse);
-
     agentsResponse.forEach((agent) =>
       this.agents.push({ id: agent.personId, title: agent.nameFull })
     );
 
     this.selectService.setSelectAction(this.actionOnAgentClicked);
+
+    this.mainPageService.setMainPageData({
+      title: 'Agents',
+      helperText: 'Select an agent to create and view trips',
+      showFooterButtons: false,
+    });
   }
 
   async actionOnAgentClicked() {
-    console.log('agent was clicked');
+    this.applicationStateService.agentId = this.selectService.lastSelectedId;
+    this.navigationService.navigate([]);
   }
 }

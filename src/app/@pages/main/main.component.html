@@ -1,13 +1,13 @@
 <div class="main">
  <div class="main--wrapper">
   <div class="header">
-   <h1>Agents</h1>
-   <p>Select an agent to create and view trips</p>
+   <h1>{{pageData.title}}</h1>
+   <p>{{pageData.helperText}}</p>
   </div>
   <div class="content">
     <router-outlet></router-outlet>
   </div>
-  <div class="footer">
+  <div class="footer" *ngIf="pageData.showFooterButtons">
    <div class="buttons">
     <button class="button-left">Later</button>
     <button class="button-right">Done</button>

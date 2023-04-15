@@ -4,7 +4,16 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class SelectService {
-  private selectAciton!: () => Promise<void>;
+  private selectAciton!: (id: string) => Promise<void>;
+  private _lastSelectedId = '';
+
+  get lastSelectedId() {
+    return this._lastSelectedId;
+  }
+
+  set lastSelectedId(id: string) {
+    this._lastSelectedId = id;
+  }
 
   constructor() {}
 
@@ -12,7 +21,7 @@ export class SelectService {
     this.selectAciton = actionMethod;
   }
 
-  async executeAction() {
-    await this.selectAciton();
+  async executeAction(id: string) {
+    await this.selectAciton(id);
   }
 }

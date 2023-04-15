@@ -15,7 +15,7 @@ export class GridItemComponent {
 
   async selectAction() {
     try {
-      await this.selectService.executeAction();
+      await this.selectService.executeAction(this.id);
     } catch (e) {
       console.log(e);
     }
