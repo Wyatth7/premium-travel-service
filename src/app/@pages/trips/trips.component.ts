@@ -4,6 +4,8 @@ import { GridItemModel } from 'src/app/models/grid-item-model';
 import { ApplicationStateService } from 'src/app/services/application-state.service';
 import { TripClientService } from 'src/app/services/clients/trip-client.service';
 import { MainPageService } from 'src/app/services/main-page.service';
+import { NavigationService } from 'src/app/services/navigation.service';
+import { SelectService } from 'src/app/services/select.service';
 
 @Component({
   selector: 'app-trips',
@@ -16,7 +18,9 @@ export class TripsComponent implements OnInit {
   constructor(
     private mainPageService: MainPageService,
     private applicationStateService: ApplicationStateService,
-    private tripClientService: TripClientService
+    private tripClientService: TripClientService,
+    private navigationService: NavigationService,
+    private selectService: SelectService
   ) {}
 
   async ngOnInit(): Promise<void> {
@@ -41,14 +45,28 @@ export class TripsComponent implements OnInit {
       });
     }, 0);
 
+    this.selectService.setSelectAction(async () =>
+      this.selectTripAction(this.selectService.lastSelectedId)
+    );
+
     await this.getTrips();
+  }
+
+  async selectTripAction(id: string) {
+    this.applicationStateService.currentTripId = id;
+
+    this.navigationService.navigate(['trip', 'edit', 'travellers']);
   }
 
   async createTripAction() {
     try {
-      await this.tripClientService.createTrip(
+      const tripState = await this.tripClientService.createTrip(
         this.applicationStateService.agentId
       );
+
+      this.applicationStateService.currentTripState = tripState;
+
+      console.log(this.applicationStateService.currentTripState);
 
       // refresh trips after trip created
       await this.getTrips();
