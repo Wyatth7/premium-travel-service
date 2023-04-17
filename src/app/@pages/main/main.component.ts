@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 })
 export class MainComponent implements OnInit, OnDestroy {
   pageData!: PageDataModel;
+  showModal = false;
 
   pageDataSubscription!: Subscription;
 
@@ -25,5 +26,15 @@ export class MainComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.pageDataSubscription.unsubscribe();
+  }
+
+  async executeAction(isDone: boolean) {
+    setTimeout(async () => {
+      if (isDone) {
+        await this.pageData.buttons?.buttonRight.action();
+      } else {
+        await this.pageData.buttons?.buttonLeft.action();
+      }
+    }, 4000);
   }
 }

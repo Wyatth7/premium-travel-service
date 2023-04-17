@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AgentTripModel } from 'src/app/models/agent-trip-model';
 import { PersonModel } from 'src/app/models/person-model';
+import { TripStateModel } from 'src/app/models/trip-state';
 import { TripStateType } from 'src/app/models/trip-state-type';
 import { HttpClientService } from './http-client.service';
 
@@ -17,7 +18,7 @@ export class TripClientService {
   }
 
   async createTrip(agentId: string) {
-    return await this.httpClientService.post<TripStateType>(
+    return await this.httpClientService.post<TripStateModel>(
       'trip/create/' + agentId
     );
   }
@@ -31,5 +32,11 @@ export class TripClientService {
 
   async nextState<TType>(tripId: string) {
     return await this.httpClientService.post<TType>('trip/next/' + tripId);
+  }
+
+  async getTripState(tripId: string) {
+    return await this.httpClientService.get$<TripStateModel>(
+      'trip/currentstate/' + tripId
+    );
   }
 }

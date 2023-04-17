@@ -53,9 +53,14 @@ export class TripsComponent implements OnInit {
   }
 
   async selectTripAction(id: string) {
+    // get selected trip state, then navigate to appropriate component
     this.applicationStateService.currentTripId = id;
 
-    this.navigationService.navigate(['trip', 'edit', 'travellers']);
+    const state = await this.tripClientService.getTripState(id);
+
+    this.navigationService.navigateToTripState(state.currentState);
+
+    // this.navigationService.navigate(['trip', 'edit', 'travellers']);
   }
 
   async createTripAction() {
@@ -64,12 +69,13 @@ export class TripsComponent implements OnInit {
         this.applicationStateService.agentId
       );
 
-      this.applicationStateService.currentTripState = tripState;
+      this.applicationStateService.currentTripState = tripState.currentState;
+      this.applicationStateService.currentTripId = tripState.tripId;
 
       console.log(this.applicationStateService.currentTripState);
 
-      // refresh trips after trip created
-      await this.getTrips();
+      // navigate to travellers
+      this.navigationService.navigate(['trip', 'edit', 'travellers']);
     } catch (error) {
       console.log(error);
     }

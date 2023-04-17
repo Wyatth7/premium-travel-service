@@ -9,9 +9,11 @@
   </div>
   <div class="footer" *ngIf="pageData.showFooterButtons">
    <div class="buttons">
-    <button *ngIf="pageData.buttons?.buttonLeft?.showButton" class="button-left">{{pageData.buttons?.buttonLeft?.buttonText}}</button>
-    <button (click)="pageData.buttons?.buttonRight?.action()" *ngIf="pageData.buttons?.buttonRight?.showButton" class="button-right">{{pageData.buttons?.buttonRight?.buttonText}}</button>
+    <button (click)="executeAction(false)" *ngIf="pageData.buttons?.buttonLeft?.showButton" class="button-left">{{pageData.buttons?.buttonLeft?.buttonText}}</button>
+    <button (click)="executeAction(true)" *ngIf="pageData.buttons?.buttonRight?.showButton" class="button-right">{{pageData.buttons?.buttonRight?.buttonText}}</button>
    </div>
   </div>
  </div>
 </div>
+
+<app-modal *ngIf="showModal"></app-modal>
