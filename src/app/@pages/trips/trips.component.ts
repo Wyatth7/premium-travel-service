@@ -53,14 +53,11 @@ export class TripsComponent implements OnInit {
   }
 
   async selectTripAction(id: string) {
-    // get selected trip state, then navigate to appropriate component
     this.applicationStateService.currentTripId = id;
 
     const state = await this.tripClientService.getTripState(id);
 
     this.navigationService.navigateToTripState(state.currentState);
-
-    // this.navigationService.navigate(['trip', 'edit', 'travellers']);
   }
 
   async createTripAction() {

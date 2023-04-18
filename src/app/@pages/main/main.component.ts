@@ -35,6 +35,6 @@ export class MainComponent implements OnInit, OnDestroy {
       } else {
         await this.pageData.buttons?.buttonLeft.action();
       }
-    }, 4000);
+    }, 0);
   }
 }

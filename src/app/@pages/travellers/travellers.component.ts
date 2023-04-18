@@ -96,7 +96,7 @@ export class TravellersComponent implements OnInit {
       payload: this.tripCreationService.idList,
     };
 
-    this.tripClientService.resumeTrip('travellers', payload);
+    await this.tripClientService.resumeTrip('travellers', payload);
 
     // move next
     const nextState = await this.tripClientService.nextState<TripStateModel>(
@@ -106,5 +106,6 @@ export class TravellersComponent implements OnInit {
     this.applicationStateService.currentTripState = nextState.currentState;
 
     // navigate to next page.
+    this.navigationService.navigateToTripState(nextState.currentState);
   }
 }

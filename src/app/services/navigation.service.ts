@@ -22,6 +22,9 @@ export class NavigationService {
       case TripStateType.Packages:
         this.navigate(['trip', 'edit', 'packages']);
         break;
+      case TripStateType.PaymentPerson:
+        this.navigate(['trip', 'edit', 'paymentperson']);
+        break;
       case TripStateType.Payment:
         this.navigate(['trip', 'edit', 'payment']);
         break;

@@ -15,6 +15,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { PaymentComponent } from './@pages/payment/payment.component';
 import { ItineraryComponent } from './@pages/itinerary/itinerary.component';
 import { ThankYouComponent } from './@pages/thank-you/thank-you.component';
+import { PaymentPersonComponent } from './@pages/payment-person/payment-person.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ThankYouComponent } from './@pages/thank-you/thank-you.component';
     PaymentComponent,
     ItineraryComponent,
     ThankYouComponent,
+    PaymentPersonComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AgentsComponent } from './@pages/agents/agents.component';
 import { ItineraryComponent } from './@pages/itinerary/itinerary.component';
 import { PackagesComponent } from './@pages/packages/packages.component';
+import { PaymentPersonComponent } from './@pages/payment-person/payment-person.component';
 import { PaymentComponent } from './@pages/payment/payment.component';
 import { ThankYouComponent } from './@pages/thank-you/thank-you.component';
 import { TravellersComponent } from './@pages/travellers/travellers.component';
@@ -21,6 +22,7 @@ const routes: Routes = [
         children: [
           { path: 'travellers', component: TravellersComponent },
           { path: 'packages', component: PackagesComponent },
+          { path: 'paymentperson', component: PaymentPersonComponent },
           { path: 'payment', component: PaymentComponent },
           { path: 'note', component: ThankYouComponent },
         ],
