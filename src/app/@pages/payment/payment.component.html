@@ -1,1 +1,39 @@
-<p>payment works!</p>
+<form #form="ngForm" class="payment">
+ <div class="select">
+  <label for="select" class="label">Payment Type</label>
+  <select required [(ngModel)]="formData.paymentType" name="paymentType" id="" class="payment-choice">
+   <option [value]="1">Card</option>
+   <option [value]="2">Check</option>
+   <option [value]="3">Cash</option>
+  </select>
+  <div class="inputs">
+   <div *ngIf="formData.paymentType === 1" class="card" ngModelGroup="card" >
+    <p class="group-header">Card Details</p>
+    <div class="input-group">
+     <input required [(ngModel)]="formData.card.nameOnCard" name="nameOnCard" type="text" class="input" placeholder="Name on Card">
+     <input required [(ngModel)]="formData.card.cardNumber" name="cardNumber" type="text" class="input" placeholder="Card Number">
+     <div class="side-by-side">
+      <input required [(ngModel)]="formData.card.expirationDate" name="expirationDate" type="date" class="input" placeholder="Expiration Date">
+      <input required [(ngModel)]="formData.card.securityCode" name="securityCode" max="3" type="text" class="input" placeholder="Security Code">
+     </div>
+    </div>
+    <p class="group-header">Address</p>
+    <div class="input-group" ngModelGroup="address">
+     <input required [(ngModel)]="formData.card.address.street" name="street" type="text" class="input" placeholder="Street">
+     <input required [(ngModel)]="formData.card.address.city" name="city" type="text" class="input" placeholder="City">
+     <div class="side-by-side">
+      <input required [(ngModel)]="formData.card.address.state" name="state" type="text" class="input" placeholder="State">
+      <input required [(ngModel)]="formData.card.address.zip" name="zip" type="text" class="input" placeholder="Zip Code">
+     </div>
+    </div>
+   </div>
+   <div class="check"></div>
+  </div>
+  <div class="amount">
+   <p class="group-header">Amount to Pay</p>
+   <div class="input-group">
+    <input required [(ngModel)]="formData.amount" min="1" name="amount" type="number" class="input" placeholder="Amount To Pay" >
+   </div>
+  </div>
+ </div>
+</form>

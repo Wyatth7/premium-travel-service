@@ -5,7 +5,9 @@ html {
 }
 
 body,
-button {
+button,
+input[type="text"],
+input[type="number"] {
   font-size: 62.5%;
   font-family: "Open Sans", sans-serif;
 }
