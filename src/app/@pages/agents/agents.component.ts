@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GridItemModel } from 'src/app/models/grid-item-model';
-import { PersonClientService } from 'src/app/services/clients/person-client.service';
+import { SingletonClientService } from 'src/app/services/clients/person-client.service';
 import { SelectService } from 'src/app/services/select.service';
 import { MainPageService } from 'src/app/services/main-page.service';
 import { NavigationService } from 'src/app/services/navigation.service';
@@ -16,7 +16,7 @@ export class AgentsComponent implements OnInit {
   agents: GridItemModel[] = [];
 
   constructor(
-    private personClientService: PersonClientService,
+    private personClientService: SingletonClientService,
     private selectService: SelectService,
     private mainPageService: MainPageService,
     private navigationService: NavigationService,

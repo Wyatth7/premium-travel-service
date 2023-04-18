@@ -4,7 +4,7 @@ import { GridItemModel } from 'src/app/models/grid-item-model';
 import { PersonModel } from 'src/app/models/person-model';
 import { TripStateModel } from 'src/app/models/trip-state';
 import { ApplicationStateService } from 'src/app/services/application-state.service';
-import { PersonClientService } from 'src/app/services/clients/person-client.service';
+import { SingletonClientService } from 'src/app/services/clients/person-client.service';
 import { TripClientService } from 'src/app/services/clients/trip-client.service';
 import { MainPageService } from 'src/app/services/main-page.service';
 import { NavigationService } from 'src/app/services/navigation.service';
@@ -20,7 +20,7 @@ export class TravellersComponent implements OnInit {
   travellers!: GridItemModel[];
 
   constructor(
-    private personClientService: PersonClientService,
+    private personClientService: SingletonClientService,
     private mainPageService: MainPageService,
     private navigationService: NavigationService,
     private tripClientService: TripClientService,
