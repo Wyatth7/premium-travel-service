@@ -12,11 +12,11 @@
    <div *ngIf="+paymentType === 1" class="card" ngModelGroup="card" >
     <p class="group-header">Card Details</p>
     <div class="input-group">
-     <input required  name="nameOnCard" type="text" class="input" placeholder="Name on Card">
-     <input required  name="cardNumber" type="text" class="input" placeholder="Card Number">
+     <input required ngModel name="nameOnCard" type="text" class="input" placeholder="Name on Card">
+     <input required ngModel name="cardNumber" type="text" class="input" placeholder="Card Number">
      <div class="side-by-side">
-      <input required  name="expirationDate" type="date" class="input" placeholder="Expiration Date">
-      <input required  name="securityCode" max="3" type="text" class="input" placeholder="Security Code">
+      <input required ngModel name="expirationDate" type="date" class="input" placeholder="Expiration Date">
+      <input required ngModel  name="securityCode" max="3" type="text" class="input" placeholder="Security Code">
      </div>
     </div>
     <p class="group-header">Address</p>
@@ -44,7 +44,7 @@
   <div class="amount">
    <p class="group-header">Amount to Pay</p>
    <div class="input-group">
-    <input required [ngModel]="amount" min="1" name="amount" type="number" class="input" placeholder="Amount To Pay" >
+    <input required [ngModel]="amount" min="0.01" name="amount" type="number" class="input" placeholder="Amount To Pay" >
    </div>
   </div>
 </form>

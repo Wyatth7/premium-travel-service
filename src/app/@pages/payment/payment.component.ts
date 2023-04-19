@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { AddTransactionModel } from 'src/app/models/payment/add-transaction-model';
 import { TripPaymentType } from 'src/app/models/trip-payment-type';
 import { TripStateType } from 'src/app/models/trip-state-type';
 import { ApplicationStateService } from 'src/app/services/application-state.service';
@@ -89,6 +90,22 @@ export class PaymentComponent implements OnInit {
     // get complete form
     // call resume state
 
-    await this.tripClientService.resumeTrip('payment', this.paymentForm.value);
+    const transaction: AddTransactionModel = {
+      tripId: this.applicationStateService.currentTripId,
+      personId: this.applicationStateService.agentId,
+      amount: this.paymentForm.value.amount,
+      paymentType: +this.paymentType,
+      card: this.paymentForm.value.card || {},
+      check: this.paymentForm.value.check || {},
+      cash: this.paymentForm.value.cash || {},
+    };
+
+    await this.tripClientService.resumeTrip('payment', transaction);
+
+    const state = await this.tripClientService.getTripState(
+      this.applicationStateService.currentTripId
+    );
+
+    this.navigationService.navigateToTripState(state.currentState);
   }
 }
