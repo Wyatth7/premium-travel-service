@@ -11,14 +11,20 @@ import { Subscription } from 'rxjs';
 export class MainComponent implements OnInit, OnDestroy {
   pageData!: PageDataModel;
   showModal = false;
+  showError = false;
 
   pageDataSubscription!: Subscription;
+  showErrorSubscription!: Subscription;
 
   constructor(private mainPageService: MainPageService) {}
 
   ngOnInit(): void {
     this.pageDataSubscription = this.mainPageService.mainPageData.subscribe(
       (pageData) => (this.pageData = pageData)
+    );
+
+    this.showErrorSubscription = this.mainPageService.showError.subscribe(
+      (shouldShow) => (this.showError = shouldShow)
     );
 
     console.log('render');

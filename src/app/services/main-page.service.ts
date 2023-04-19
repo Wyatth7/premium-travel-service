@@ -28,9 +28,15 @@ export class MainPageService {
     },
   });
 
+  showError = new BehaviorSubject<boolean>(false);
+
   constructor() {}
 
   setMainPageData(newPageData: PageDataModel) {
     this.mainPageData.next(newPageData);
+  }
+
+  shouldDisplayError(shouldShow: boolean) {
+    this.showError.next(shouldShow);
   }
 }

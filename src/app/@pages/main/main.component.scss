@@ -55,6 +55,17 @@
 
     .footer {
       border-top: 1px solid var(--gray);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .error-text {
+        width: 100%;
+        font-size: 1rem;
+        margin: 0;
+        color: var(--red);
+      }
+
       .buttons {
         display: flex;
         justify-content: flex-end;

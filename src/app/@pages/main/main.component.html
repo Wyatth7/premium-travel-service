@@ -8,9 +8,10 @@
     <router-outlet></router-outlet>
   </div>
   <div class="footer" *ngIf="pageData.showFooterButtons">
+    <p class="error-text" *ngIf="showError">{{pageData.errorText}}</p>
    <div class="buttons">
-    <button (click)="executeAction(false)" *ngIf="pageData.buttons?.buttonLeft?.showButton" class="button-left">{{pageData.buttons?.buttonLeft?.buttonText}}</button>
-    <button (click)="executeAction(true)" *ngIf="pageData.buttons?.buttonRight?.showButton" class="button-right">{{pageData.buttons?.buttonRight?.buttonText}}</button>
+    <button (click)="executeAction(false)" *ngIf="pageData.buttons?.buttonLeft?.showButton" [disabled]="pageData.buttons?.buttonLeft?.disable" class="button-left">{{pageData.buttons?.buttonLeft?.buttonText}}</button>
+    <button (click)="executeAction(true)" *ngIf="pageData.buttons?.buttonRight?.showButton" [disabled]="pageData.buttons?.buttonRight?.disable" class="button-right">{{pageData.buttons?.buttonRight?.buttonText}}</button>
    </div>
   </div>
  </div>

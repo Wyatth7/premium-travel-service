@@ -39,4 +39,8 @@ export class TripClientService {
       'trip/currentstate/' + tripId
     );
   }
+
+  async getRemainingTripBalance(tripId: string) {
+    return await this.httpClientService.get$<number>('trip/payment/' + tripId);
+  }
 }

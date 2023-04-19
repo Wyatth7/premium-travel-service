@@ -5,6 +5,7 @@ import { TripStateType } from 'src/app/models/trip-state-type';
 import { ApplicationStateService } from 'src/app/services/application-state.service';
 import { TripClientService } from 'src/app/services/clients/trip-client.service';
 import { MainPageService } from 'src/app/services/main-page.service';
+import { NavigationService } from 'src/app/services/navigation.service';
 
 @Component({
   selector: 'app-payment',
@@ -13,6 +14,8 @@ import { MainPageService } from 'src/app/services/main-page.service';
 })
 export class PaymentComponent implements OnInit {
   @ViewChild('form') paymentForm!: NgForm;
+  paymentType = TripPaymentType.card;
+  amount = 0;
 
   formData = {
     paymentType: 1,
@@ -28,26 +31,33 @@ export class PaymentComponent implements OnInit {
         zip: '30707',
       },
     },
+    check: {
+      routingNumber: '123123123',
+      accountNumber: '000122',
+      checkNumber: '123X223',
+    },
     amount: 599,
   };
 
   constructor(
     private mainPageService: MainPageService,
     private tripClientService: TripClientService,
-    private applicationStateService: ApplicationStateService
+    private applicationStateService: ApplicationStateService,
+    private navigationService: NavigationService
   ) {}
 
-  ngOnInit(): void {
+  async ngOnInit() {
     setTimeout(() => {
       this.mainPageService.setMainPageData({
         title: 'Payment',
         helperText: 'Enter payment details below to finalize this trip',
         showFooterButtons: true,
+        errorText: 'This form contains an error',
         buttons: {
           buttonLeft: {
             showButton: true,
             buttonText: 'Later',
-            action: async () => {},
+            action: async () => this.laterAction(),
           },
           buttonRight: {
             showButton: true,
@@ -57,11 +67,28 @@ export class PaymentComponent implements OnInit {
         },
       });
     }, 0);
+
+    const amountResponse = await this.tripClientService.getRemainingTripBalance(
+      this.applicationStateService.currentTripId
+    );
+
+    this.amount = amountResponse;
+  }
+
+  async laterAction() {
+    this.navigationService.navigate(['trips']);
   }
 
   async submitPaymentAction() {
+    console.log(this.paymentForm.value);
+    if (this.paymentForm.invalid) {
+      this.mainPageService.shouldDisplayError(true);
+      return;
+    }
+
     // get complete form
-    // if form is invalid/incomplete, return
     // call resume state
+
+    await this.tripClientService.resumeTrip('payment', this.paymentForm.value);
   }
 }

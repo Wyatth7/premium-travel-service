@@ -5,6 +5,7 @@ export interface PageDataModel {
   title: string;
   helperText: string;
   showFooterButtons: boolean;
+  errorText?: string;
   buttons?: {
     buttonLeft: PageDataButtonModel;
     buttonRight: PageDataButtonModel;
