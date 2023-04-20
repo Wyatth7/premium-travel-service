@@ -1,1 +1,9 @@
-<p>itinerary works!</p>
+<div class="itinerary">
+ <app-itinerary-group title="Travellers">
+  <ol>
+   <li *ngFor="let traveler of itinerary.travellers" >
+    {{traveler}}
+   </li>
+  </ol>
+ </app-itinerary-group>
+</div>

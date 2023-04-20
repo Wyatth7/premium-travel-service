@@ -8,14 +8,16 @@ import { PaymentComponent } from './@pages/payment/payment.component';
 import { ThankYouComponent } from './@pages/thank-you/thank-you.component';
 import { TravellersComponent } from './@pages/travellers/travellers.component';
 import { TripsComponent } from './@pages/trips/trips.component';
+import { tripCreationGuard, tripsGuard } from './authentication/auth-guards';
 
 // paths: agents, trips, create
 
 const routes: Routes = [
   { path: 'agents', component: AgentsComponent },
-  { path: 'trips', component: TripsComponent },
+  { path: 'trips', component: TripsComponent, canActivate: [tripsGuard] },
   {
     path: 'trip',
+    canActivate: [tripCreationGuard],
     children: [
       {
         path: 'edit',

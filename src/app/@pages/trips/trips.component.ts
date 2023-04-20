@@ -32,9 +32,9 @@ export class TripsComponent implements OnInit {
         showFooterButtons: true,
         buttons: {
           buttonLeft: {
-            showButton: false,
-            buttonText: '',
-            action: async () => {},
+            showButton: true,
+            buttonText: 'Back',
+            action: async () => this.laterAction(),
           },
           buttonRight: {
             showButton: true,
@@ -92,5 +92,9 @@ export class TripsComponent implements OnInit {
         extraText: agentTrip.isComplete ? 'Complete' : 'Incomplete',
       })
     );
+  }
+
+  private async laterAction() {
+    this.navigationService.navigate(['agents']);
   }
 }

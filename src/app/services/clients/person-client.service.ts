@@ -24,4 +24,10 @@ export class SingletonClientService {
       'singleton/packages'
     );
   }
+
+  async getAgent(agentId: string) {
+    return await this.httpClientService.get$<PersonModel>(
+      'agent/details/' + agentId
+    );
+  }
 }

@@ -17,6 +17,7 @@ import { PaymentComponent } from './@pages/payment/payment.component';
 import { ItineraryComponent } from './@pages/itinerary/itinerary.component';
 import { ThankYouComponent } from './@pages/thank-you/thank-you.component';
 import { PaymentPersonComponent } from './@pages/payment-person/payment-person.component';
+import { ItineraryGroupComponent } from './@pages/itinerary/itinerary-group/itinerary-group.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { PaymentPersonComponent } from './@pages/payment-person/payment-person.c
     ItineraryComponent,
     ThankYouComponent,
     PaymentPersonComponent,
+    ItineraryGroupComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
