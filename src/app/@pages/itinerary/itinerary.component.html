@@ -1,9 +1,66 @@
 <div class="itinerary">
+ <app-itinerary-group title="Thank You Note">
+  <ul>
+   <li>
+    <p>{{itinerary.thankYouNote}}</p>
+   </li>
+  </ul>
+ </app-itinerary-group>
  <app-itinerary-group title="Travellers">
   <ol>
    <li *ngFor="let traveler of itinerary.travellers" >
     {{traveler}}
    </li>
   </ol>
+ </app-itinerary-group>
+ <app-itinerary-group [title]="'Trip Details, beginning ' + itinerary.startDate + ' and ending on ' + itinerary.endDate + '.'">
+  <ol>
+   <li *ngFor="let tripDetail of itinerary.tripDetails">
+    <p>{{tripDetail.description}}</p>
+    <p> From {{tripDetail.startDate}} to {{tripDetail.endDate}} </p>
+   </li>
+  </ol>
+ </app-itinerary-group>
+ <app-itinerary-group title="Billing">
+  <ul>
+   <p>Total: {{itinerary.billing.total | currency}}<p>
+    <li>
+     <app-itinerary-group title="Transactions">
+      <ol>
+       <li *ngFor="let transaction of itinerary.billing.transactions" 
+       [ngSwitch]="transaction.paymentType">
+        <p>{{transaction.paidByName}} paid {{transaction.amount | currency}}
+          using 
+          <span *ngSwitchCase="1">a Card</span>
+          <span *ngSwitchCase="2">a Check</span>
+          <span *ngSwitchCase="3">Cash</span>
+         </p>
+
+         <ul *ngSwitchCase="1">
+          <li>Card Number: {{transaction.card.cardNumber}}</li>
+          <li>amount: {{transaction.amount | currency}}</li>
+         </ul>
+         <ul *ngSwitchCase="2">
+          <li>Check Number: {{transaction.check.checkNumber}}</li>
+          <li>amount: {{transaction.amount | currency}}</li>
+         </ul>
+         <ul *ngSwitchCase="3">
+          <li>amount: {{transaction.amount | currency}}</li>
+         </ul>
+       </li>
+      </ol>
+     </app-itinerary-group>
+    </li>
+   <li>
+    <app-itinerary-group title="Billing Details">
+     <ul>
+      <li *ngFor="let billingDetail of itinerary.billing.billingDetails">
+       <p>{{billingDetail.tripDetail}}</p>
+       <p>{{billingDetail.amount | currency}}</p>
+      </li>
+     </ul>
+    </app-itinerary-group>
+   </li>
+  </ul>
  </app-itinerary-group>
 </div>

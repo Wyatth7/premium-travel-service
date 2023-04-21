@@ -57,6 +57,7 @@ export class ItineraryComponent implements OnInit {
     );
 
     this.itinerary = itinerary as ItineraryModel;
+    console.log(this.itinerary);
   }
 
   async doneAction() {

@@ -18,28 +18,6 @@ export class PaymentComponent implements OnInit {
   paymentType = TripPaymentType.card;
   amount = 0;
 
-  formData = {
-    paymentType: 1,
-    card: {
-      nameOnCard: 'test',
-      cardNumber: '1111 2222 3333 4444',
-      expirationDate: Date.now,
-      securityCode: '123',
-      address: {
-        street: '123 street ln',
-        city: 'city ways',
-        state: 'ga',
-        zip: '30707',
-      },
-    },
-    check: {
-      routingNumber: '123123123',
-      accountNumber: '000122',
-      checkNumber: '123X223',
-    },
-    amount: 599,
-  };
-
   constructor(
     private mainPageService: MainPageService,
     private tripClientService: TripClientService,

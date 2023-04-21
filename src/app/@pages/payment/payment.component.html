@@ -42,9 +42,9 @@
    </div>
   </div>
   <div class="amount">
-   <p class="group-header">Amount to Pay</p>
+   <p class="group-header">Balace Remaining <span class="total">{{amount | currency}}</span></p>
    <div class="input-group">
-    <input required [ngModel]="amount" min="0.01" name="amount" type="number" class="input" placeholder="Amount To Pay" >
+    <input required ngModel min="0.01" name="amount" type="number" class="input" placeholder="Amount To Pay" >
    </div>
   </div>
 </form>

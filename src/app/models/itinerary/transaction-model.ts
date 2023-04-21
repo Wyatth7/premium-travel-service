@@ -8,6 +8,6 @@ export interface TransactionModel {
   amount: number;
   paymentType: TripPaymentType;
   card: CardModel;
-  Check: CheckModel;
+  check: CheckModel;
   cash: CashModel;
 }

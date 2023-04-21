@@ -1,5 +1,5 @@
-import { PersonModel } from '../person-model';
 import { BillingModel } from './billing-model';
+import { TripDetailModel } from './trip-detail-model';
 
 export interface ItineraryModel {
   startDate: Date;
@@ -7,4 +7,5 @@ export interface ItineraryModel {
   thankYouNote: string;
   travellers: string[];
   billing: BillingModel;
+  tripDetails: TripDetailModel[];
 }

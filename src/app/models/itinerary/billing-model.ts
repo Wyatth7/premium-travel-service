@@ -1,9 +1,9 @@
 import { PackageModel } from '../package-model';
 import { TransactionModel } from './transaction-model';
-import { TripDetailModel } from './trip-detail-model';
+import { BillingDetailModel } from './billing-detail-model';
 
 export interface BillingModel {
   total: number;
-  billingDetails: TripDetailModel[];
+  billingDetails: BillingDetailModel[];
   transactions: TransactionModel[];
 }

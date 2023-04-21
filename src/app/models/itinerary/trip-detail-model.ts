@@ -1,4 +1,5 @@
 export interface TripDetailModel {
-  tripDetail: string;
-  amount: number;
+  startDate: Date;
+  endDate: Date;
+  description: string;
 }
