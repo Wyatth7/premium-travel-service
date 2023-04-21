@@ -33,7 +33,7 @@ export class TripsComponent implements OnInit {
         buttons: {
           buttonLeft: {
             showButton: true,
-            buttonText: 'Back',
+            buttonText: 'Agents',
             action: async () => this.laterAction(),
           },
           buttonRight: {
