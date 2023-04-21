@@ -1,50 +1,53 @@
-<form #form="ngForm" class="payment">
- <div class="select">
-  <label for="select" class="label">Payment Type</label>
-  <select required [(ngModel)]="paymentType" name="paymentType" id="" class="payment-choice">
-   <option [value]="1">Card</option>
-   <option [value]="2">Check</option>
-   <option [value]="3">Cash</option>
-  </select>
- </div>
-  
-  <div class="inputs">
-   <div *ngIf="+paymentType === 1" class="card" ngModelGroup="card" >
-    <p class="group-header">Card Details</p>
-    <div class="input-group">
-     <input required ngModel name="nameOnCard" type="text" class="input" placeholder="Name on Card">
-     <input required ngModel name="cardNumber" type="text" class="input" placeholder="Card Number">
-     <div class="side-by-side">
-      <input required ngModel name="expirationDate" type="date" class="input" placeholder="Expiration Date">
-      <input required ngModel  name="securityCode" max="3" type="text" class="input" placeholder="Security Code">
-     </div>
+<div class="payment">
+
+  <div class="select">
+    <label for="select" class="label">Payment Type</label>
+    <select required [(ngModel)]="paymentType" name="paymentType" id="" class="payment-choice">
+      <option [value]="1">Card</option>
+      <option [value]="2">Check</option>
+      <option [value]="3">Cash</option>
+    </select>
+  </div>
+  <form #form="ngForm" class="payment">
+    
+    <div class="inputs">
+      <div *ngIf="+paymentType === 1" class="card" ngModelGroup="card" >
+        <p class="group-header">Card Details</p>
+        <div class="input-group">
+          <input required ngModel name="nameOnCard" type="text" class="input" placeholder="Name on Card">
+          <input required ngModel name="cardNumber" type="text" class="input" placeholder="Card Number">
+          <div class="side-by-side">
+            <input required ngModel name="expirationDate" type="date" class="input" placeholder="Expiration Date">
+            <input required ngModel  name="securityCode" max="3" type="text" class="input" placeholder="Security Code">
+          </div>
     </div>
     <p class="group-header">Address</p>
     <div class="input-group" ngModelGroup="address">
-     <input required ngModel name="street" type="text" class="input" placeholder="Street">
-     <input required ngModel name="city" type="text" class="input" placeholder="City">
+      <input required ngModel name="street" type="text" class="input" placeholder="Street">
+      <input required ngModel name="city" type="text" class="input" placeholder="City">
      <div class="side-by-side">
-      <input required ngModel name="state" type="text" class="input" placeholder="State">
-      <input required ngModel name="zip" type="text" class="input" placeholder="Zip Code">
-     </div>
+       <input required ngModel name="state" type="text" class="input" placeholder="State">
+       <input required ngModel name="zip" type="text" class="input" placeholder="Zip Code">
+      </div>
     </div>
-   </div>
+  </div>
    <div class="check" *ngIf="+paymentType === 2" ngModelGroup="check">
-    <p class="group-header">Check Information</p>
-    <div class="input-group">
-     <input required ngModel name="routingNumber" type="text" class="input" placeholder="Routing Number">
-     <div class="side-by-side">
-
-      <input required ngModel name="accountNumber" type="text" class="input" placeholder="Account Number">
-      <input required ngModel name="checkNumber" type="text" class="input" placeholder="Check Number">
-     </div>
+     <p class="group-header">Check Information</p>
+     <div class="input-group">
+       <input required ngModel name="routingNumber" type="text" class="input" placeholder="Routing Number">
+       <div class="side-by-side">
+         
+         <input required ngModel name="accountNumber" type="text" class="input" placeholder="Account Number">
+         <input required ngModel name="checkNumber" type="text" class="input" placeholder="Check Number">
+        </div>
+      </div>
     </div>
-   </div>
   </div>
   <div class="amount">
-   <p class="group-header">Balace Remaining <span class="total">{{amount | currency}}</span></p>
-   <div class="input-group">
-    <input required ngModel min="0.01" name="amount" type="number" class="input" placeholder="Amount To Pay" >
-   </div>
+    <p class="group-header">Balace Remaining <span class="total">{{amount | currency}}</span></p>
+    <div class="input-group">
+      <input required ngModel min="0.01" name="amount" type="number" class="input" placeholder="Amount To Pay" >
+    </div>
   </div>
 </form>
+</div>

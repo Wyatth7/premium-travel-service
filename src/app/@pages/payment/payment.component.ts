@@ -47,11 +47,7 @@ export class PaymentComponent implements OnInit {
       });
     }, 0);
 
-    const amountResponse = await this.tripClientService.getRemainingTripBalance(
-      this.applicationStateService.currentTripId
-    );
-
-    this.amount = amountResponse;
+    await this.setAmount();
   }
 
   async laterAction() {
@@ -84,6 +80,22 @@ export class PaymentComponent implements OnInit {
       this.applicationStateService.currentTripId
     );
 
+    if (state.currentState === TripStateType.Payment) {
+      //refresh amount
+      await this.setAmount();
+      this.paymentForm.resetForm();
+
+      return;
+    }
+
     this.navigationService.navigateToTripState(state.currentState);
+  }
+
+  private async setAmount() {
+    const amountResponse = await this.tripClientService.getRemainingTripBalance(
+      this.applicationStateService.currentTripId
+    );
+
+    this.amount = amountResponse;
   }
 }
