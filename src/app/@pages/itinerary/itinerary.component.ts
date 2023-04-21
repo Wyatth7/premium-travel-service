@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ItineraryModel } from 'src/app/models/itinerary/itinerary-model';
 import { PersonModel } from 'src/app/models/person-model';
@@ -21,7 +22,8 @@ export class ItineraryComponent implements OnInit {
     private applicationStateService: ApplicationStateService,
     private mainPageService: MainPageService,
     private navigationService: NavigationService,
-    private personClientService: SingletonClientService
+    private personClientService: SingletonClientService,
+    private datePipe: DatePipe
   ) {}
 
   async ngOnInit() {
@@ -62,5 +64,9 @@ export class ItineraryComponent implements OnInit {
 
   async doneAction() {
     this.navigationService.navigate(['trips']);
+  }
+
+  formatDate(date: Date) {
+    return this.datePipe.transform(date);
   }
 }

@@ -13,11 +13,11 @@
    </li>
   </ol>
  </app-itinerary-group>
- <app-itinerary-group [title]="'Trip Details, beginning ' + itinerary.startDate + ' and ending on ' + itinerary.endDate + '.'">
+ <app-itinerary-group [title]="'Trip Details, beginning ' + formatDate(itinerary.startDate) + ' and ending on ' + formatDate(itinerary.endDate) + '.'">
   <ol>
    <li *ngFor="let tripDetail of itinerary.tripDetails">
     <p>{{tripDetail.description}}</p>
-    <p> From {{tripDetail.startDate}} to {{tripDetail.endDate}} </p>
+    <p> From {{tripDetail.startDate | date}} to {{tripDetail.endDate | date}} </p>
    </li>
   </ol>
  </app-itinerary-group>

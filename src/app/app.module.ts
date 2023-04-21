@@ -18,6 +18,7 @@ import { ItineraryComponent } from './@pages/itinerary/itinerary.component';
 import { ThankYouComponent } from './@pages/thank-you/thank-you.component';
 import { PaymentPersonComponent } from './@pages/payment-person/payment-person.component';
 import { ItineraryGroupComponent } from './@pages/itinerary/itinerary-group/itinerary-group.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { ItineraryGroupComponent } from './@pages/itinerary/itinerary-group/itin
     ItineraryGroupComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
