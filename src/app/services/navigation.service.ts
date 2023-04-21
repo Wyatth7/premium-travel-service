@@ -1,14 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { TripStateType } from '../models/trip-state-type';
+import { MainPageService } from './main-page.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class NavigationService {
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private mainPageService: MainPageService
+  ) {}
 
   navigate(path: string[]) {
+    this.mainPageService.shouldDisplayError(false);
     this.router.navigate(path);
   }
 

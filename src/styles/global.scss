@@ -25,3 +25,9 @@ input {
   font-weight: 500;
   margin: 0.5rem 0;
 }
+
+.colored {
+  background-color: var(--blue) !important;
+  color: var(--white);
+  border-radius: 5px;
+}

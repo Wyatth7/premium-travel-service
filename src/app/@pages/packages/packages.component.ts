@@ -36,6 +36,7 @@ export class PackagesComponent implements OnInit {
         title: 'Packages',
         helperText: 'Select packages to add to the trip',
         showFooterButtons: true,
+        errorText: 'There was an issue adding packages',
         buttons: {
           buttonLeft: {
             showButton: true,
@@ -78,7 +79,11 @@ export class PackagesComponent implements OnInit {
       payload: this.tripCreationService.idList,
     };
 
-    await this.tripClientService.resumeTrip('packages', payload);
+    try {
+      await this.tripClientService.resumeTrip('packages', payload);
+    } catch (e) {
+      console.log(e);
+    }
 
     // redirect to trips page
     this.navigationService.navigate(['trips']);
@@ -94,17 +99,22 @@ export class PackagesComponent implements OnInit {
       payload: this.tripCreationService.idList,
     };
 
-    await this.tripClientService.resumeTrip('packages', payload);
+    try {
+      await this.tripClientService.resumeTrip('packages', payload);
 
-    // move next
-    const nextState = await this.tripClientService.nextState<TripStateModel>(
-      this.applicationStateService.currentTripId
-    );
+      // move next
+      const nextState = await this.tripClientService.nextState<TripStateModel>(
+        this.applicationStateService.currentTripId
+      );
 
-    this.applicationStateService.currentTripState = nextState.currentState;
+      this.applicationStateService.currentTripState = nextState.currentState;
 
-    // navigate to next page.
-    this.navigationService.navigateToTripState(nextState.currentState);
+      // navigate to next page.
+      this.navigationService.navigateToTripState(nextState.currentState);
+    } catch (e) {
+      console.log(e);
+      this.mainPageService.shouldDisplayError(true);
+    }
   }
 
   async addPackagesAction(id: string) {

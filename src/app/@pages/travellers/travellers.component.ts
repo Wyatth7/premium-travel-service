@@ -37,6 +37,7 @@ export class TravellersComponent implements OnInit {
         title: 'Travellers',
         helperText: 'Select travellers to add to trip',
         showFooterButtons: true,
+        errorText: 'There was an issue adding travellers',
         buttons: {
           buttonLeft: {
             showButton: true,
@@ -71,8 +72,6 @@ export class TravellersComponent implements OnInit {
   }
 
   async laterAction() {
-    console.log('runngin');
-
     // call resume
     const payload: AddTravellersModel = {
       tripId: this.applicationStateService.currentTripId,
@@ -80,15 +79,17 @@ export class TravellersComponent implements OnInit {
       payload: this.tripCreationService.idList,
     };
 
-    await this.tripClientService.resumeTrip('travellers', payload);
+    try {
+      await this.tripClientService.resumeTrip('travellers', payload);
+    } catch (e) {
+      console.log(e);
+    }
 
     // redirect to trips page
     this.navigationService.navigate(['trips']);
   }
 
   async doneAction() {
-    console.log('running');
-
     // call resume
     const payload: AddTravellersModel = {
       tripId: this.applicationStateService.currentTripId,
@@ -96,16 +97,21 @@ export class TravellersComponent implements OnInit {
       payload: this.tripCreationService.idList,
     };
 
-    await this.tripClientService.resumeTrip('travellers', payload);
+    try {
+      await this.tripClientService.resumeTrip('travellers', payload);
 
-    // move next
-    const nextState = await this.tripClientService.nextState<TripStateModel>(
-      this.applicationStateService.currentTripId
-    );
+      // move next
+      const nextState = await this.tripClientService.nextState<TripStateModel>(
+        this.applicationStateService.currentTripId
+      );
 
-    this.applicationStateService.currentTripState = nextState.currentState;
+      this.applicationStateService.currentTripState = nextState.currentState;
 
-    // navigate to next page.
-    this.navigationService.navigateToTripState(nextState.currentState);
+      // navigate to next page.
+      this.navigationService.navigateToTripState(nextState.currentState);
+    } catch (e) {
+      console.log(e);
+      this.mainPageService.shouldDisplayError(true);
+    }
   }
 }

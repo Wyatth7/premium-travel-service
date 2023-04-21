@@ -9,11 +9,18 @@ export class TripCreationService {
   constructor() {}
 
   addToIdList(id: string) {
-    if (this.idList.includes(id)) return;
+    if (this.idList.includes(id)) {
+      this.removeIdFromList(id);
+      return;
+    }
 
     this.idList.push(id);
+  }
 
-    console.log(this.idList);
+  removeIdFromList(id: string) {
+    if (!this.idList.includes(id)) return;
+
+    this.idList = this.idList.filter((listId) => listId !== id);
   }
 
   clearIdList() {
