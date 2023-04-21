@@ -1,3 +1,7 @@
 <div class="trips">
+ <div *ngIf="agentTripData.length == 0" class="no-trips">
+  <h1>It looks like you don't have any trips</h1>
+  <p>To start a trip, click Create.</p>
+ </div>
  <app-grid [data]="agentTripData"></app-grid>
 </div>
