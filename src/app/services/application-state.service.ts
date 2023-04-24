@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TripStateType } from '../models/trip-state-type';
+import { TripStateType } from '../models/trip/trip-state-type';
 
 @Injectable({
   providedIn: 'root',

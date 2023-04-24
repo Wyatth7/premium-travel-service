@@ -1,4 +1,4 @@
-import { TripPaymentType } from '../trip-payment-type';
+import { TripPaymentType } from '../trip/trip-payment-type';
 import { CardModel } from './card-model';
 import { CashModel } from './cash-model';
 import { CheckModel } from './check-model';

@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { PageDataModel } from 'src/app/models/page-data-model';
+import { PageDataModel } from 'src/app/models/page-data/page-data-model';
 import { MainPageService } from 'src/app/services/main-page.service';
 import { Subscription } from 'rxjs';
 

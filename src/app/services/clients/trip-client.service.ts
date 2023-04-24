@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AgentTripModel } from 'src/app/models/agent-trip-model';
 import { PersonModel } from 'src/app/models/person-model';
-import { TripStateModel } from 'src/app/models/trip-state';
-import { TripStateType } from 'src/app/models/trip-state-type';
+import { TripStateModel } from 'src/app/models/trip/trip-state';
+import { TripStateType } from 'src/app/models/trip/trip-state-type';
 import { HttpClientService } from './http-client.service';
 
 @Injectable({

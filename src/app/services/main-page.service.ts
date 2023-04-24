@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PageDataModel } from '../models/page-data-model';
+import { PageDataModel } from '../models/page-data/page-data-model';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AddTravellersModel } from 'src/app/models/add-travellers-model';
+import { AddTravellersModel } from 'src/app/models/trip/add-travellers-model';
 import { GridItemModel } from 'src/app/models/grid-item-model';
 import { PersonModel } from 'src/app/models/person-model';
-import { TripStateModel } from 'src/app/models/trip-state';
+import { TripStateModel } from 'src/app/models/trip/trip-state';
 import { ApplicationStateService } from 'src/app/services/application-state.service';
 import { SingletonClientService } from 'src/app/services/clients/person-client.service';
 import { TripClientService } from 'src/app/services/clients/trip-client.service';

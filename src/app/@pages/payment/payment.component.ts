@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AddTransactionModel } from 'src/app/models/payment/add-transaction-model';
-import { TripPaymentType } from 'src/app/models/trip-payment-type';
-import { TripStateType } from 'src/app/models/trip-state-type';
+import { TripPaymentType } from 'src/app/models/trip/trip-payment-type';
+import { TripStateType } from 'src/app/models/trip/trip-state-type';
 import { ApplicationStateService } from 'src/app/services/application-state.service';
 import { TripClientService } from 'src/app/services/clients/trip-client.service';
 import { MainPageService } from 'src/app/services/main-page.service';

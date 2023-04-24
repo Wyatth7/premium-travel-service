@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { TripStateType } from '../models/trip-state-type';
+import { TripStateType } from '../models/trip/trip-state-type';
 import { MainPageService } from './main-page.service';
 
 @Injectable({

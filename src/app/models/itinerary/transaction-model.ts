@@ -1,7 +1,7 @@
 import { CardModel } from '../payment/card-model';
 import { CashModel } from '../payment/cash-model';
 import { CheckModel } from '../payment/check-model';
-import { TripPaymentType } from '../trip-payment-type';
+import { TripPaymentType } from '../trip/trip-payment-type';
 
 export interface TransactionModel {
   paidByName: string;

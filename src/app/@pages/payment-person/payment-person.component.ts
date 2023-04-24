@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AddPaymentPersonModel } from 'src/app/models/add-payment-person-model';
-import { AddTravellersModel } from 'src/app/models/add-travellers-model';
+import { AddPaymentPersonModel } from 'src/app/models/payment/add-payment-person-model';
+import { AddTravellersModel } from 'src/app/models/trip/add-travellers-model';
 import { GridItemModel } from 'src/app/models/grid-item-model';
 import { ApplicationStateService } from 'src/app/services/application-state.service';
 import { SingletonClientService } from 'src/app/services/clients/person-client.service';
