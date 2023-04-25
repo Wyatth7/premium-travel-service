@@ -34,7 +34,7 @@ export class TravellersComponent implements OnInit {
 
     setTimeout(() => {
       this.mainPageService.setMainPageData({
-        title: 'Travellers',
+        title: 'Travelers',
         helperText: 'Select travellers to add to trip',
         showFooterButtons: true,
         errorText: 'There was an issue adding travellers',
